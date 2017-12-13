@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Title"
@@ -23,7 +23,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvDes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dictumst sagittis mattis facilisis sociosqu ut eros morbi maecenas quam, vehicula platea nullam nunc venenatis turpis viverra metus, egestas neque augue luctus eu mi ullamcorper taciti. Sodales aptent penatibus parturient sociis iaculis, aliquam porttitor hac class." />

@@ -9,7 +9,8 @@
     tools:context="net.torora.jtam.noteapp.MainActivity">
 
     <ListView
-        android:background="@color/gray"
+        android:id="@+id/lvNotes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/gray" />
 </LinearLayout>
