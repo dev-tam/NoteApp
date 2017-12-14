@@ -1,10 +1,17 @@
 package net.torora.jtam.noteapp
 
+import android.app.SearchManager
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.SearchView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ticket.view.*
 
@@ -22,6 +29,39 @@ class MainActivity : AppCompatActivity() {
 
         var myNotesAdapter=MyNotesAdapter(listNotes)
         lvNotes.adapter=myNotesAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu,menu)
+        val searchView = menu!!.findItem(R.id.app_bar_search).actionView as SearchView
+        val sm = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        searchView.setSearchableInfo(sm.getSearchableInfo(componentName))
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Toast.makeText(applicationContext, query, Toast.LENGTH_LONG).show()
+                // Todo: search database
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item != null) {
+            when(item.itemId){
+                R.id.add_note->{
+                    //go to add note page
+                    var intent= Intent(this, AddNote::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     inner class MyNotesAdapter:BaseAdapter{
